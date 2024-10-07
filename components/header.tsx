@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React, { ReactNode } from "react";
+import UserIcon from "./user-icon";
 
 const Header = ({ children }: { children: ReactNode }) => {
   return (
@@ -15,6 +16,9 @@ const Header = ({ children }: { children: ReactNode }) => {
           <div className="absolute h-[400px] top-0 bg-black opacity-40 w-full"></div>
           <div className="absolute h-[400px] top-0 bg-gradient-to-t from-black w-full"></div>
         </div>
+      </section>
+      <section>
+        <UserIcon />
       </section>
       <section className="absolute">{children}</section>
     </header>
