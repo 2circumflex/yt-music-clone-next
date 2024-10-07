@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 
 const layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <div className="w-full h-full">
       <Header>{children}</Header>
     </div>
   );
