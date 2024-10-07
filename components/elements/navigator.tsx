@@ -6,6 +6,8 @@ import { FiPlus, FiMusic, FiCompass } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { dummyPlaylistArray } from "@/lib/dummy-data";
+import PlaylistNav from "./playlist-nav";
 
 const Navigator = () => {
   const pathname = usePathname();
@@ -56,10 +58,17 @@ const Navigator = () => {
         <div className="w-full h-[1px] bg-neutral-700"></div>
       </section>
       <section className="px-6">
-        <div className="hover:bg-neutral-600 cursor-pointer flex flex-row items-center justify-center bg-neutral-700 my-6 rounded-3xl p-2 font-[200] gap-2">
+        <div className="hover:bg-neutral-700 cursor-pointer flex flex-row items-center justify-center bg-neutral-800 my-6 rounded-3xl p-2 font-[200] gap-2">
           <FiPlus size={24} />
           <span>새 재생목록</span>
         </div>
+      </section>
+      <section>
+        <ul className="flex flex-col">
+          {dummyPlaylistArray.map((playlist) => {
+            return <PlaylistNav playlist={playlist} />;
+          })}
+        </ul>
       </section>
     </div>
   );
