@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { ReactNode } from "react";
 import UserIcon from "./user-icon";
+import PagePadding from "./page-padding";
 
 const Header = ({ children }: { children: ReactNode }) => {
   return (
@@ -17,10 +18,13 @@ const Header = ({ children }: { children: ReactNode }) => {
           <div className="absolute h-[400px] top-0 bg-gradient-to-t from-black w-full"></div>
         </div>
       </section>
-      <section>
-        <UserIcon />
+      <section className="sticky">
+        <PagePadding>
+          searchSection
+          <UserIcon />
+        </PagePadding>
       </section>
-      <section className="absolute">{children}</section>
+      <section className="relative">{children}</section>
     </header>
   );
 };
