@@ -16,7 +16,7 @@ export default async function Home() {
           playlistArray={[...dummyPlayListArray1]}
           Thumbnail={
             <div className="w-[56px] h-[56px]">
-              <UserIcon />
+              <UserIcon size={"lg"} />
             </div>
           }
           title={"다시 듣기"}
