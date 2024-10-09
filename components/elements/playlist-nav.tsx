@@ -1,9 +1,10 @@
 "use client";
 
+import { Playlist } from "@/types";
 import React from "react";
 import { IoMdPlayCircle } from "react-icons/io";
 
-const PlaylistNav = ({ playlist }) => {
+const PlaylistNav = ({ playlist }: { playlist: Playlist }) => {
   const { id, owner, playlistName, songList } = playlist;
 
   const onClickPlay = () => {
