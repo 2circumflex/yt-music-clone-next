@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import PlaylistCard from "./playlist-card";
 import { chunkArray } from "@/lib/utils";
 import SongCard from "./song-card";
 
