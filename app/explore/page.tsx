@@ -1,9 +1,14 @@
 import PagePadding from "@/components/page-padding";
 import React from "react";
 import Category from "./components/category";
-import { getAllPlaylist, getSongListTop10 } from "@/lib/dummy-data";
+import {
+  dummyGenreList,
+  getAllPlaylist,
+  getSongListTop10,
+} from "@/lib/dummy-data";
 import PlaylistCarousel from "@/components/playlist-carousel";
 import SonglistCarousel from "@/components/songlist-carousel";
+import GenrelistCarousel from "@/components/genrelist-carousel";
 
 const page = async () => {
   const [playlistArry, songlistTop10] = await Promise.all([
@@ -20,6 +25,7 @@ const page = async () => {
       <div className="mt-20"></div>
       <SonglistCarousel songlistTop10={songlistTop10} title="인기곡" />
       <div className="mt-20"></div>
+      <GenrelistCarousel genrelist={dummyGenreList} title="분위기 및 장르" />
       <div className="mt-20"></div>
       <div className="mt-20"></div>
     </PagePadding>
