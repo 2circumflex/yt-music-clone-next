@@ -1,7 +1,20 @@
+import { getPlaylistById } from "@/lib/dummy-data";
+import { permanentRedirect } from "next/navigation";
 import React from "react";
 
-const page = ({ searchParams }: { searchParams: { list: string } }) => {
-  return <div>playlist {searchParams.list}</div>;
+interface PlaylistPageProps {
+  searchParams: {
+    list: string;
+  };
+}
+
+const page = async (props: PlaylistPageProps) => {
+  const playlist = await getPlaylistById(Number(props.searchParams.list));
+  if (!playlist) {
+    permanentRedirect("/");
+  }
+
+  return <div>playlist {props.searchParams.list}</div>;
 };
 
 export default page;
