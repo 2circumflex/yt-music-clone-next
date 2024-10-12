@@ -10,6 +10,7 @@ import {
   FiThumbsUp,
 } from "react-icons/fi";
 import IconButton from "./elements/icon-button";
+import { useRouter } from "next/navigation";
 
 interface SongCardRowExpandProps {
   song: Song;
@@ -17,6 +18,11 @@ interface SongCardRowExpandProps {
 
 const SongCardRowExpand: React.FC<SongCardRowExpandProps> = ({ song }) => {
   const { channel, channelId } = song;
+  const router = useRouter();
+
+  const onClickChannel = () => {
+    router.push(`/channel/${channelId}`);
+  };
 
   return (
     <article className="flex flex-row items-center gap-4 h-[48px] w-full relative group">
@@ -26,10 +32,16 @@ const SongCardRowExpand: React.FC<SongCardRowExpandProps> = ({ song }) => {
           <FiPlayCircle size={20} />
         </section>
       </div>
-      <div>
-        <div>{song.name}</div>
+      <div className="flex flex-row gap-4 justify-between basis-1/3">
+        <div className="w-[130px] truncate">{song.name}</div>
+        <div
+          onClick={onClickChannel}
+          className="text-neutral-500 hover:underline cursor-pointer"
+        >
+          {channel}
+        </div>
       </div>
-      <section className="hidden absolute top-0 right-0 group-hover:flex flex-row justify-end items-center h-[48px] w-1/2 bg-[rgba(0,0,0,0.7)]">
+      <section className="hidden absolute top-0 right-0 group-hover:flex flex-row justify-end items-center h-[48px] w-[120px] bg-[rgba(0,0,0,0.7)]">
         <IconButton icon={<FiThumbsDown size={20} />} onClickIcon={() => {}} />
         <IconButton icon={<FiThumbsUp size={20} />} onClickIcon={() => {}} />
         <IconButton
