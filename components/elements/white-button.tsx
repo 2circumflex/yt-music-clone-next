@@ -11,7 +11,7 @@ const WhiteButton = ({
 }: {
   icon: ReactNode;
   label: string;
-  className: string | undefined;
+  className?: string;
 }) => {
   return (
     <div
