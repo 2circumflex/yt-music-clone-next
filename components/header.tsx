@@ -53,15 +53,16 @@ const Header = ({ children }: { children: ReactNode }) => {
   const headRef = useRef<HTMLHeadElement>(null);
 
   useEffect(() => {
+    const currentHeadRef = headRef.current;
+
     const handleScroll = () => {
       const scrollValue = headRef?.current?.scrollTop;
       setIsScrolled(scrollValue !== 0);
     };
 
-    headRef?.current?.addEventListener("scroll", handleScroll);
+    currentHeadRef?.addEventListener("scroll", handleScroll);
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      headRef?.current?.removeEventListener("scroll", handleScroll);
+      currentHeadRef?.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
