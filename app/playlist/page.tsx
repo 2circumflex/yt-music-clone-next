@@ -1,4 +1,6 @@
 import HeaderBgChanger from "@/components/header-bg-changer";
+import PagePadding from "@/components/page-padding";
+import PlaylistHead from "@/components/playlist-head";
 import { getPlaylistById } from "@/lib/dummy-data";
 import { getRandomElementFromArray } from "@/lib/utils";
 import { permanentRedirect } from "next/navigation";
@@ -22,10 +24,10 @@ const page = async (props: PlaylistPageProps) => {
   )?.imageSrc;
 
   return (
-    <div>
+    <PagePadding>
       <HeaderBgChanger imageSrc={imageSrc} />
-      playlist {props.searchParams.list}
-    </div>
+      <PlaylistHead playlist={playlist} />
+    </PagePadding>
   );
 };
 
