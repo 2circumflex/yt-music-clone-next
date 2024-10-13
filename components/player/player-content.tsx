@@ -30,7 +30,14 @@ const PlayerContent = () => {
   return (
     <div className="h-full w-full relative">
       <div className="absolute top-[-16px] w-full">
-        <PlayerSlider />
+        <PlayerSlider
+          className="w-full"
+          defaultValue={[0]}
+          value={[state.time]}
+          onValueChange={(value) => {
+            controls.seek(value[0]);
+          }}
+        />
       </div>
       {audio}
       <section className="flex flex-row justify-between items-center w-full h-full px-2 lg:px-6">
