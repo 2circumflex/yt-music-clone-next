@@ -33,8 +33,34 @@ const usePlayerState = create<PlayerState>((set) => ({
         isVisiblePlayer: true,
       };
     }),
-  playNext: () => {},
-  playBack: () => {},
+  playNext: () =>
+    set((prev) => {
+      const currentSong = prev.activeSong;
+      const nextSrc = prev.nextPlayerQueue.splice(0, 1)?.[0];
+
+      return {
+        activeSong: nextSrc,
+        nextPlayerQueue: prev.nextPlayerQueue,
+        prevPlayerQueue: [
+          ...(currentSong ? [currentSong] : []),
+          ...prev.prevPlayerQueue,
+        ],
+      };
+    }),
+  playBack: () =>
+    set((prev) => {
+      const currentSong = prev.activeSong;
+      const prevSrc = prev.prevPlayerQueue.splice(0, 1)?.[0];
+
+      return {
+        activeSong: prevSrc,
+        nextPlayerQueue: [
+          ...(currentSong ? [currentSong] : []),
+          ...prev.nextPlayerQueue,
+        ],
+        prevPlayerQueue: prev.prevPlayerQueue,
+      };
+    }),
 }));
 
 export default usePlayerState;
