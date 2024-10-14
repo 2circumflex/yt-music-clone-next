@@ -4,12 +4,14 @@ import { getRandomElementFromArray } from "@/lib/utils";
 import { Playlist, Song } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { MdMoreVert } from "react-icons/md";
 import { FiPlay } from "react-icons/fi";
 import IconButton from "./elements/icon-button";
+import usePlayerState from "@/hooks/usePlayerState";
 
 const PlaylistCard = ({ playlist }: { playlist: Playlist | null }) => {
+  const { addSongList } = usePlayerState();
   const router = useRouter();
   const { id, owner = "", playlistName = "", songList = [] } = playlist ?? {};
 
@@ -22,8 +24,9 @@ const PlaylistCard = ({ playlist }: { playlist: Playlist | null }) => {
     }
   };
 
-  const onClickPlay = () => {
-    // TODO: 플레이
+  const onClickPlay = (e: any) => {
+    e.stopPropagation();
+    addSongList(songList);
   };
 
   const onClickMore = () => {
